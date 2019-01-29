@@ -113,10 +113,10 @@ long int durationList[6] = {
 void setup()
 {
   //delay(4000);
-  rgbStrip.initWS2812(16, 6);
+  rgbStrip.initWS2812(22, 6);//(number of leds, pin)
   pinMode(tiltSensorPin, INPUT);
-  pinMode(7, OUTPUT);
-  digitalWrite(7, 1);
+  pinMode(7, OUTPUT);//set power pin for tilt sensor
+  digitalWrite(7, 1);//set pin to output 5v /make sure your sensor does not require a lot of amperage
   updateAnimation();
 }
 
@@ -131,6 +131,10 @@ void loop()
       duration = random (0, 200);
       updateAnimation();
       faite = 1;
+      AlaColor randcol_[2] = { random(0x000000, 0xFFFFFF), random(0x000000, 0xFFFFFF) };
+      AlaPalette randcol = { 2, randcol_ };
+      AlaColor randcoll_[4] = { random(0x000000, 0xFFFFFF), random(0x000000, 0xFFFFFF), random(0x000000, 0xFFFFFF), random(0x000000, 0xFFFFFF) };
+      AlaPalette randcoll = { 4, randcoll_ };
       AlaColor randcool_[16] = { random(0x000000, 0xFFFFFF), random(0x000000, 0xFFFFFF), random(0x000000, 0xFFFFFF), random(0x000000, 0xFFFFFF), random(0x000000, 0xFFFFFF), random(0x000000, 0xFFFFFF), random(0x000000, 0xFFFFFF), random(0x000000, 0xFFFFFF), random(0x000000, 0xFFFFFF), random(0x000000, 0xFFFFFF), random(0x000000, 0xFFFFFF), random(0x000000, 0xFFFFFF), random(0x000000, 0xFFFFFF), random(0x000000, 0xFFFFFF), random(0x000000, 0xFFFFFF), random(0x000000, 0xFFFFFF) };
       AlaPalette randcool = { 16, randcool_ };
       AlaPalette paletteList[18] = {
